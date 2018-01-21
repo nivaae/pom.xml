@@ -81,20 +81,19 @@
                 </executions>
             </plugin>
             <plugin>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>fix-output</id>
-                        <phase>process-classes</phase>
-                        <configuration>
-                            <tasks>
-                               <!-- Change this if you set the final name yourself: -->
-                                <property name="d" location="${basedir}/target/${project.artifactId}-${project.version}"/>
-                                <copy todir="${d}">
-                                    <fileset dir="${basedir}/target/executable-war" includes="**/*"/>
-                                </copy>
-                            </tasks>
-                        </configuration>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.2</version>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.5</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
                         <goals>
                             <goal>run</goal>
                         </goals>
